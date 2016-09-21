@@ -13,8 +13,7 @@ node {
     stage 'Checkout and Build'
     build job: 'demo-checkoutandbuild', parameters: [[$class: 'StringParameterValue', name: 'GITURL', value: "$giturl"], [$class: 'StringParameterValue', name: 'POMDIRECTORY', value: "$pomdirectory"], [$class: 'StringParameterValue', name: 'APP', value: "$app"], [$class: 'StringParameterValue', name: 'TAG', value: "build${env.BUILD_NUMBER}"]]
     
-    
-    def version = "cat /tmp/${app}/VERSION".execute()
+    def version = readFile("/tmp/${app}/VERSION")
 
     stage 'Push to Dev'
     build job: 'demo-dev', parameters: [[$class: 'StringParameterValue', name: 'TAG', value: "build${env.BUILD_NUMBER}"], [$class: 'StringParameterValue', name: 'APP', value: "$app"], [$class: 'StringParameterValue', name: 'READINESSPROBE', value: "$readinessprobe"], [$class: 'StringParameterValue', name: 'LIVENESSPROBE', value: "$livenessprobe"]]
