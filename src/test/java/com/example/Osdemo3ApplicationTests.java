@@ -21,6 +21,10 @@ public class Osdemo3ApplicationTests {
 
     @Autowired
     private MockMvc mvc;
+    
+	@Test
+	public void contextLoads() {
+	}
 
     @Test
     public void testSayHelloWorld() throws Exception {
