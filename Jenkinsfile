@@ -43,6 +43,6 @@ node {
     	build job: 'demo-stage', parameters: [[$class: 'StringParameterValue', name: 'TAG', value: "build${env.BUILD_NUMBER}"], [$class: 'StringParameterValue', name: 'APP', value: "$app"], [$class: 'StringParameterValue', name: 'READINESSPROBE', value: "$readinessprobe"], [$class: 'StringParameterValue', name: 'LIVENESSPROBE', value: "$livenessprobe"], [$class: 'StringParameterValue', name: 'REPLICAS', value: "$replicas"]]
     	
     	stage 'Stage Integration Tests'
-        build job: 'demo-integrationtests', parameters: [[$class: 'StringParameterValue', name: 'TAG', value: "build${env.BUILD_NUMBER}"], [$class: 'StringParameterValue', name: 'APP', value: "$app"], [$class: 'StringParameterValue', name: 'PROJECT', value: "$testNamespace"]]    
+        build job: 'demo-integrationtests', parameters: [[$class: 'StringParameterValue', name: 'TAG', value: "build${env.BUILD_NUMBER}"], [$class: 'StringParameterValue', name: 'APP', value: "$app"], [$class: 'StringParameterValue', name: 'PROJECT', value: "$stageNamespace"]]    
     }
 }
